@@ -10,13 +10,40 @@ namespace ProductosMVC.Controllers
 {
     public class ProductoController : Controller
     {
-        private static List<Producto> listaprod = new List<Producto>();
+        private static List<Producto> listaprod = new List<Producto>() 
+        { 
+           new Producto(1001, "Teclado", 10,451.0),
+           new Producto(1002, "Mouse", 15, 234.5),
+           new Producto(1003, "Monitor", 8, 1250.0),
+           new Producto(1004, "Impresora", 5, 980.0),
+           new Producto(1005, "CPU", 12, 2250.0)
+        };
 
+        // INICIO DEL EJEMPLO DE VISTA PARCIAL
         // GET: Producto
-        public ActionResult Index()
+        public ActionResult ListarProductos()
         {
             return View(listaprod);
         }
+
+        public ActionResult ProductosStock(int stk = 0)
+        {
+            var listado = listaprod.Where(p => p.StkProd >= stk)
+                                        .ToList();
+            ViewBag.stock = stk;
+            return View(listado);
+        }
+
+        public ActionResult ProductosPrecios(double pre1 = 0, double pre2 = 0)
+        {
+            var listado = listaprod.Where(p => p.PreProd >= pre1 &&
+                                        p.PreProd <= pre2)
+                                        .ToList();
+            return View(listado);
+        }
+
+
+        // FIN DEL EJEMPLO DE VISTA PARCIAL
 
         // GET: Producto/Create
         public ActionResult Create()

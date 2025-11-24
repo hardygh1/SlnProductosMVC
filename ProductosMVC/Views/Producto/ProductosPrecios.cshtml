@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ProductosMVC.Models.Producto>
+
+@{
+    ViewBag.Title = "ProductosPrecios";
+}
+
+<h2>ProductosPrecios</h2>
+
+<!-- Formulario de ASP Net MVC-->
+@using (Html.BeginForm())
+{
+    <div>
+        <em>Desde el Precio: </em>@Html.TextBox("pre1", 0, new { type = "number" })
+        <em>Hasta el Precio: </em>@Html.TextBox("pre2", 0, new { type = "number" })
+        <button class="btn btn-info">Consultar</button>
+    </div>
+}
+
+<p>
+<p>
+    @Html.ActionLink("Listar Productos", "ListarProductos")
+    @Html.ActionLink("Productos Por Stock", "ProductosStock")
+</p>
+</p>
+<!-- llamando a la ista parcial-->
+@Html.Partial("PartialProductos")

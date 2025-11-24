@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ProductosMVC.Models.Producto>
+
+@{
+    ViewBag.Title = "ListarProductos";
+}
+
+<h2>ListarProductos</h2>
+
+<p>
+    @Html.ActionLink("Productos Por Stock", "ProductosStock", null, new { @class = "btn btn-warning"})
+    @Html.ActionLink("Productos Por Precios", "ProductosPrecios", null, new { @class = "btn btn-success" })
+</p>
+<!-- llamando a la ista parcial-->
+@Html.Partial("PartialProductos")

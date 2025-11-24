@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProductosMVC.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (TempData["mensaje"] != null)
+  {
+    <div class="alert alert-primary">
+        <h4><strong>@TempData["mensaje"]</strong></h4>
+    </div>
+  }
+<p>
+    @Html.ActionLink("Nuevo Producto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StkProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreProd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StkProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreProd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
